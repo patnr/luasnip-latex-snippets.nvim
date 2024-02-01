@@ -5,15 +5,15 @@ local M = {}
 
 local vec_node = {
   f(function(_, snip)
-    return string.format("\\vec{%s} ", snip.captures[1])
+    return string.format("\\vec{%s}", snip.captures[1])
   end, {}),
 }
 
 M.math_wrA_no_backslash = {
-  { "([%a][%a])(%.,)", vec_node },
-  { "([%a][%a])(,%.)", vec_node },
-  { "([%a])(%.,)", vec_node },
-  { "([%a])(,%.)", vec_node },
+  { "([%a][%a])(jk)", vec_node },
+  { "([%a][%a])(kj)", vec_node },
+  { "([%a])(jk)", vec_node },
+  { "([%a])(kj)", vec_node },
 }
 
 M.decorator = {}

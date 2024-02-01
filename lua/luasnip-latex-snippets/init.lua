@@ -74,6 +74,11 @@ M.setup_tex = function(is_math, not_math)
       "\\usepackage[${1:options}]{${2:package}}$0"
     ),
 
+    ls.parser.parse_snippet(
+      { trig = "newcommand", name = "newcommand (macro)" },
+      "\\newcommand{${1:name}}[${2:nargs}]{${3:implementation}}$0"
+    ),
+
     -- ls.parser.parse_snippet({ trig = "nn", name = "Tikz node" }, {
     --   "$0",
     --   -- "\\node[$5] (${1/[^0-9a-zA-Z]//g}${2}) ${3:at (${4:0,0}) }{$${1}$};",

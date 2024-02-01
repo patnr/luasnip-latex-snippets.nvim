@@ -1,6 +1,12 @@
 local ls = require("luasnip")
 local t = ls.text_node
 local i = ls.insert_node
+local f = ls.function_node
+local fmta = require("luasnip.extras.fmt").fmta
+local function is_env(name) 
+    local is_inside = vim.fn['vimtex#env#is_inside'](name)
+    return (is_inside[1] > 0 and is_inside[2] > 0)
+end
 
 local M = {}
 
@@ -24,6 +30,21 @@ function M.retrieve(not_math)
       { trig = "ali", name = "Align" },
       { t({ "\\begin{align*}", "\t" }), i(1), t({ "", ".\\end{align*}" }) }
     ),
+
+    s(
+      { trig = "-- ", name = "itemize" },
+      fmta([[
+        \begin{itemize}
+          \item <>
+        \end{itemize}
+        ]], { i(0), })
+    ),
+    s({trig = "- ", name = "\\item",
+      condition=function () return is_env("itemize") end},
+      {t("\\item "), i(0),
+        -- Fix issue: \item does not get de-indented when expanded via snippet.
+        -- https://github.com/SirVer/ultisnips/issues/913#issuecomment-392086829
+        f(function(_, _) vim.cmd[[call feedkeys("\<C-f>")]] end, {})}),
 
     parse_snippet({ trig = "beg", name = "begin{} / end{}" }, "\\begin{$1}\n\t$0\n\\end{$1}"),
     parse_snippet({ trig = "case", name = "cases" }, "\\begin{cases}\n\t$1\n\\end{cases}"),
