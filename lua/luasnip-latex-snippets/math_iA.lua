@@ -149,6 +149,11 @@ function M.retrieve(is_math)
     parse_snippet({ trig = ">>", name = ">>" }, "\\gg"),
     parse_snippet({ trig = "<<", name = "<<" }, "\\ll"),
 
+    parse_snippet({ trig = "left_right(", name = "left( right)" }, "\\left( $1 \\right)$0"),
+    parse_snippet({ trig = "left_right[", name = "left[ right]" }, "\\left[ $1 \\right]$0"),
+    parse_snippet({ trig = "left_right<", name = "left< right>" }, "\\left< $1 \\right>$0"),
+    parse_snippet({ trig = "left_right{", name = "left{ right}" }, "\\left\\{ $1 \\right\\\\}$0"),
+
   }
 end
 
