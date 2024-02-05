@@ -118,8 +118,8 @@ function M.retrieve(is_math)
     parse_snippet({ trig = "||", name = "norm2" }, "\\| $1 \\|^2$0"),
 
     parse_snippet({ trig = "beg", name = "begin{} / end{}" }, "\\begin{$1}\n\t$0\n\\end{$1}"),
-    parse_snippet({ trig = "bmat", name = "bmat" }, "\\begin{bmatrix} $1 \\end{bmatrix} $0"),
-    parse_snippet({ trig = "pmat", name = "pmat" }, "\\begin{pmatrix} $1 \\end{pmatrix} $0"),
+    parse_snippet({ trig = "bmat", name = "bmat" }, "\\begin{bmatrix} $1 \\end{bmatrix}$0"),
+    parse_snippet({ trig = "pmat", name = "pmat" }, "\\begin{pmatrix} $1 \\end{pmatrix}$0"),
     parse_snippet({ trig = "...", name = "ldots", priority = 100 }, "\\ldots"),
 
     parse_snippet(

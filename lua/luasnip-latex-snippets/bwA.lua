@@ -32,6 +32,28 @@ function M.retrieve(not_math)
     ),
 
     s(
+      {
+        trig = "eq_env",
+        dscr = "Equation environment",
+        regTrig = false,
+        priority = 100,
+        snippetType = "autosnippet",
+      },
+      fmta([[
+      \begin{equation}
+          \label{eq:<>}
+          <>
+          \,.<>
+      \end{equation}
+      ]], {
+          i(1),
+          i(2),
+          i(3),
+        }
+      )
+    ),
+
+    s(
       { trig = "-- ", name = "itemize" },
       fmta([[
         \begin{itemize}

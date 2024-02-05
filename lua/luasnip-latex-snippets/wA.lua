@@ -29,6 +29,9 @@ function M.retrieve(not_math)
     parse_snippet({ trig = "*x", name = "Underlined" }, "\\sout{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*k", name = "Underlined" }, "\\keyw{${1:${TM_SELECTED_TEXT}}}${0}"),
 
+    parse_snippet({ trig = "double_quote_snip", name = "Double quotes" }, "\\enquote{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "single_quote_snip", name = "Single quotes" }, "\\enquote*{${1:${TM_SELECTED_TEXT}}}${0}"),
+
 
   }
 end
