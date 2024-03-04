@@ -159,17 +159,19 @@ function M.retrieve(is_math)
 
     parse_snippet({ trig = "<>", name = "hokje" }, "\\diamond"),
     parse_snippet({ trig = ">>", name = ">>" }, "\\gg"),
-    -- parse_snippet({ trig = "<<", name = "<<" }, "\\ll"), prefer to use for angle brackets
+    -- parse_snippet({ trig = "<<", name = "<<" }, "\\ll"),
+    parse_snippet({ trig = "<<", name = "<<" }, "\\langle $1 \\rangle$0"),
 
     parse_snippet({ trig = "left_right(", name = "left( right)" }, "\\left( $1 \\right)$0"),
     parse_snippet({ trig = "left_right[", name = "left[ right]" }, "\\left[ $1 \\right]$0"),
-    parse_snippet({ trig = "left_right<", name = "left< right>" }, "\\left< $1 \\right>$0"),
     parse_snippet({ trig = "left_right{", name = "\\{ \\}" }, "\\{ $1 \\\\}$0"),
 
-    parse_snippet({ trig = "<_2snip", name = "Autopair paranthesis with jumpable placeholder" }, "<${1}>$0"),
     parse_snippet({ trig = "(_2snip", name = "Autopair paranthesis with jumpable placeholder" }, "(${1})$0"),
     parse_snippet({ trig = "[_2snip", name = "Autopair bracket with jumpable placeholder" }, "[${1}]$0"),
     parse_snippet({ trig = "{_2snip", name = "Autopair brace with jumpable placeholder" }, "{${1}}$0"),
+
+    -- Dont really want this is math mode, but autopairs doesnt sense whether in math or no.
+    parse_snippet({ trig = "$_2snip", name = "Autopair dollar with jumpable placeholder" }, "\\$${1}\\$${0}"),
   }
 end
 
