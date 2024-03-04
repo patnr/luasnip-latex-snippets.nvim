@@ -67,6 +67,18 @@ function M.retrieve(is_math)
     ),
     s(
       {
+        trig = "(%a+)tilde",
+        wordTrig = false,
+        regTrig = true,
+        name = "tilde",
+        priority = 100,
+      },
+      f(function(_, snip)
+        return string.format("\\tilde{%s}", snip.captures[1])
+      end, {})
+    ),
+    s(
+      {
         trig = "(%a+)ora",
         wordTrig = false,
         regTrig = true,
@@ -91,10 +103,10 @@ function M.retrieve(is_math)
     ),
 
 
-    parse_snippet({ trig = "*|", name = "text" }, "\\text{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*f", name = "text" }, "\\mathfrak{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*c", name = "text" }, "\\mathcal{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*s", name = "text" }, "\\mathscr{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*T", name = "text" }, "\\text{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*F", name = "mathfrak" }, "\\mathfrak{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*C", name = "mathcal" }, "\\mathcal{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*S", name = "mathscr" }, "\\mathscr{${1:${TM_SELECTED_TEXT}}}${0}"),
 
     parse_snippet({ trig = "exists", name = "exists" }, "\\exists"),
     parse_snippet({ trig = "forall", name = "forall" }, "\\forall"),
