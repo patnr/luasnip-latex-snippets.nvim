@@ -17,6 +17,7 @@ function M.retrieve(not_math)
     parse_snippet({ trig = "Cref", name = "\\Cref" }, "\\Cref{${1:${TM_SELECTED_TEXT}}}$0"),
     parse_snippet({ trig = "eqref", name = "\\eqref" }, "\\eqref{eq:$1}$0"),
     parse_snippet({ trig = "href", name = "\\href" }, "\\href{${1:${TM_SELECTED_TEXT}}}{${2:text}}${0}"),
+    parse_snippet({ trig = "aslink", name = "\\href" }, "\\href{${2:url}}{${1:${TM_SELECTED_TEXT}}}${0}"),
 
     parse_snippet({ trig = "citet", name = "\\citet" }, "\\citet{$1}$0"),
     parse_snippet({ trig = "citep", name = "\\citep" }, "\\citep{$1}$0"),
