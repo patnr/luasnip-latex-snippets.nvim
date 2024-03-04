@@ -3,9 +3,14 @@ local t = ls.text_node
 local i = ls.insert_node
 local f = ls.function_node
 local fmta = require("luasnip.extras.fmt").fmta
+
+-- copied from luasnip-latex-snippets.util.utils
 local function is_env(name) 
     local is_inside = vim.fn['vimtex#env#is_inside'](name)
     return (is_inside[1] > 0 and is_inside[2] > 0)
+end
+local function is_math()
+  return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 end
 
 local M = {}
@@ -62,7 +67,7 @@ function M.retrieve(not_math)
         ]], { i(0), })
     ),
     s({trig = "- ", name = "\\item",
-      condition=function () return is_env("itemize") end},
+      condition=function () return is_env("itemize") and not is_math() end},
       {t("\\item "), i(0),
         -- Fix issue: \item does not get de-indented when expanded via snippet.
         -- https://github.com/SirVer/ultisnips/issues/913#issuecomment-392086829
