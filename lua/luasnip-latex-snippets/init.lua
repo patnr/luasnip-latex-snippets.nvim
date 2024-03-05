@@ -92,6 +92,9 @@ M.setup_tex = function(is_math, not_math)
 
   ls.add_snippets("tex", math_i, { default_priority = 0 })
 
+  local w = require("luasnip-latex-snippets/w").retrieve(is_math, not_math)
+  ls.add_snippets("tex", w, { default_priority = 0 })
+
   ls.add_snippets("tex", _autosnippets(is_math, not_math), {
     type = "autosnippets",
     default_priority = 0,
