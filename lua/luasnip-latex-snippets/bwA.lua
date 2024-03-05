@@ -73,28 +73,11 @@ function M.retrieve(not_math)
         -- https://github.com/SirVer/ultisnips/issues/913#issuecomment-392086829
         f(function(_, _) vim.cmd[[call feedkeys("\<C-f>")]] end, {})}),
 
-    parse_snippet({ trig = "beg", name = "begin{} / end{}" }, "\\begin{$1}\n\t$0\n\\end{$1}"),
+    parse_snippet({ trig = "beg", name = "begin{} / end{}" }, "\\begin{$1}\n\t$2\n\\end{$1}"),
     parse_snippet({ trig = "case", name = "cases" }, "\\begin{cases}\n\t$1\n\\end{cases}"),
 
-    s({ trig = "bigfun", name = "Big function" }, {
-      t({ "\\begin{align*}", "\t" }),
-      i(1),
-      t(":"),
-      t(" "),
-      i(2),
-      t("&\\longrightarrow "),
-      i(3),
-      t({ " \\", "\t" }),
-      i(4),
-      t("&\\longmapsto "),
-      i(1),
-      t("("),
-      i(4),
-      t(")"),
-      t(" = "),
-      i(0),
-      t({ "", ".\\end{align*}" }),
-    }),
+    parse_snippet({ trig = "bigfun", name = "Big function" },
+      "\\begin{align*}\n\t$1 : $2 &\\longrightarrow $3 \\\\\\\n\t$4 &\\longmapsto $1 ($4) = $5\n\\,.\n\\end{align*}"),
   }
 end
 
