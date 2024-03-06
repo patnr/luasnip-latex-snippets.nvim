@@ -41,7 +41,6 @@ function M.retrieve(not_math)
     parse_snippet({ trig = "[_2snip", name = "Autopair bracket with jumpable placeholder" }, "[${1}]$0"),
     parse_snippet({ trig = "{_2snip", name = "Autopair brace with jumpable placeholder" }, "{${1}}$0"),
 
-    parse_snippet({ trig = "$_2snip", name = "Autopair dollar with jumpable placeholder" }, "\\$${1}\\$${0}"),
     parse_snippet({ trig = '"_2snip', name = "Autopair quote with jumpable placeholder" }, '\"${1}\"${0}'),
     parse_snippet({ trig = "'_2snip", name = "Autopair quote* with jumpable placeholder" }, "'${1}'${0}"),
   }
