@@ -24,7 +24,7 @@ function M.retrieve(is_math)
     with_priority({ trig = "asec", name = "asec" }, "\\arcsec"),
 
     parse_snippet({ trig = "set", name = "set" }, [[ \\{$1\\} $0 ]]),
-    parse_snippet({ trig = "fun", name = "function map" }, "f \\colon $1 \\to \\colon $0"),
+    parse_snippet({ trig = "fun", name = "function map" }, "${1:f} \\colon ${2:\\Reals} \\to \\colon ${3:\\Reals}"),
 
     parse_snippet({ trig = "lim", name = "limit" }, "\\lim_{${1:n} \\to ${2:\\infty}} "),
     parse_snippet(
