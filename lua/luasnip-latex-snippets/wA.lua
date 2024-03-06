@@ -22,6 +22,8 @@ function M.retrieve(not_math)
     parse_snippet({ trig = "citet", name = "\\citet" }, "\\citet{$1}$0"),
     parse_snippet({ trig = "citep", name = "\\citep" }, "\\citep{$1}$0"),
 
+    parse_snippet({ trig = "=>", name = "implies", priority=1001 }, "\\$\\implies\\$"),
+
     parse_snippet({ trig = "**", name = "Emphasis" }, "\\emph{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*b", name = "Emphasis" }, "\\textbf{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*/", name = "Italicezed" }, "\\textit{${1:${TM_SELECTED_TEXT}}}${0}"),
