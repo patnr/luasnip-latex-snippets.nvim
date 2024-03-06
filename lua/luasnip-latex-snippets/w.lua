@@ -8,11 +8,12 @@ local fmta = require("luasnip.extras.fmt").fmta
 local M = {}
 
 function M.retrieve(is_math, not_math)
+  local condition = pipe({ not_math })
   local parse_snippet = ls.extend_decorator.apply(ls.parser.parse_snippet, {
-    -- condition = pipe({ not_math }),
+    condition = condition,
   }) --[[@as function]]
   local s = ls.extend_decorator.apply(ls.snippet, {
-    -- condition = condition,
+    condition = condition,
   }) --[[@as function]]
 
   return {

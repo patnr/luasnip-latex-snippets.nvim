@@ -66,8 +66,9 @@ function M.retrieve(not_math)
         \end{itemize}
         ]], { i(0), })
     ),
+
     s({trig = "- ", name = "\\item",
-      condition=function () return is_env("itemize") and not is_math() end},
+      condition=pipe({ condition, function () return is_env("itemize") end})},
       {t("\\item "), i(0),
         -- Fix issue: \item does not get de-indented when expanded via snippet.
         -- https://github.com/SirVer/ultisnips/issues/913#issuecomment-392086829
