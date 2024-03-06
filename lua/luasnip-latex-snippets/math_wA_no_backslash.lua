@@ -29,11 +29,11 @@ function M.retrieve(is_math)
     parse_snippet({ trig = "lim", name = "limit" }, "\\lim_{${1:n} \\to ${2:\\infty}} "),
     parse_snippet(
       { trig = "sum", name = "sum" },
-      "\\sum_{${1:n=${2:1}}}^{${3:\\infty}} ${4:${TM_SELECTED_TEXT}} $0"
+      "\\sum_{${1:n=1}}^{${2:\\infty}} ${3:${TM_SELECTED_TEXT}} $0"
     ),
     parse_snippet(
       { trig = "prod", name = "product" },
-      "\\prod_{${1:n=${2:1}}}^{${3:\\infty}} ${4:${TM_SELECTED_TEXT}} $0"
+      "\\prod_{${1:n=1}}^{${2:\\infty}} ${3:${TM_SELECTED_TEXT}} $0"
     ),
 
 
