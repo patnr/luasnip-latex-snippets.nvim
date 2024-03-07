@@ -56,6 +56,8 @@ local _autosnippets = function(is_math, not_math)
   for _, s in ipairs({
     "wA",
     "bwA",
+    "iA",
+    "iA_no_backslash",
   }) do
     vim.list_extend(
       autosnippets,
