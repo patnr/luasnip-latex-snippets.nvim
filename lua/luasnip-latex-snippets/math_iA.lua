@@ -117,6 +117,9 @@ function M.retrieve(is_math)
     parse_snippet({ trig = "compl", name = "complement" }, "^{c}"),
     parse_snippet({ trig = "\\\\\\", name = "setminus" }, "\\setminus"),
 
+    parse_snippet({ trig = "union", name = "set union" }, "\\cup"),
+    parse_snippet({ trig = "inters", name = "set union" }, "\\cap"),
+
     parse_snippet({ trig = "//", name = "Fraction" }, "\\frac{$1}{$2}$0"),
 
     parse_snippet({ trig = "floor", name = "floor" }, "\\left\\lfloor $1 \\right\\rfloor$0"),
