@@ -107,6 +107,7 @@ function M.retrieve(is_math)
     parse_snippet({ trig = "*F", name = "mathfrak" }, "\\mathfrak{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*C", name = "mathcal" }, "\\mathcal{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*S", name = "mathscr" }, "\\mathscr{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*B", name = "mathbb" }, "\\mathbb{${1:${TM_SELECTED_TEXT}}}${0}"),
 
     parse_snippet({ trig = "exists", name = "exists" }, "\\exists"),
     parse_snippet({ trig = "forall", name = "forall" }, "\\forall"),
