@@ -18,6 +18,8 @@ function M.retrieve(not_math)
     parse_snippet({ trig = "dm", name = "Block Math" }, "\\[\n\t${1:${TM_SELECTED_TEXT}}\n.\\] $0"),
 
     parse_snippet({ trig = "=>", name = "implies", priority=1001 }, "\\$\\implies\\$"),
+    parse_snippet({ trig = "<--", name = "becomes" , priority=1001}, "\\$\\longleftarrow\\$"),
+    parse_snippet({ trig = "...", name = "ldots" , priority=1001}, "\\$\\ldots\\$"),
 
     parse_snippet({ trig = "**", name = "Emphasis" }, "\\emph{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*b", name = "Emphasis" }, "\\textbf{${1:${TM_SELECTED_TEXT}}}${0}"),
