@@ -127,7 +127,7 @@ function M.retrieve(is_math)
 
     parse_snippet({ trig = "__", name = "subscript" }, "_{$1}$0"),
     parse_snippet({ trig = "invs", name = "inverse" }, "^{-1}"),
-    parse_snippet({ trig = "^^", name = "subscript" }, "_{$1}$0"),
+    parse_snippet({ trig = "^^", name = "subscript" }, "^{$1}$0"),
 
 
     -- TODO:
