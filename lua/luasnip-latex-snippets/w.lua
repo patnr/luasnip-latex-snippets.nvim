@@ -72,6 +72,7 @@ function M.retrieve(is_math, not_math)
         \setlist{topsep=2pt,itemsep=2pt,partopsep=2pt, parsep=2pt}
 
         \usepackage[svgnames]{xcolor}
+        \usepackage{soul} % provides \st for strikethrough (cancel)
 
         \usepackage{amsfonts,amssymb}    % define ensembles
         \usepackage[intlimits]{amsmath}  % intlimits for limits above/below

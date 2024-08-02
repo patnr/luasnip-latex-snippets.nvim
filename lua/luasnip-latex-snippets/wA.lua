@@ -26,7 +26,7 @@ function M.retrieve(not_math)
     parse_snippet({ trig = "*/", name = "Italicezed" }, "\\textit{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*t", name = "Texttt" }, "\\texttt{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*_", name = "Underlined" }, "\\underline{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*x", name = "Underlined" }, "\\sout{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*x", name = "Strikethrough" }, "\\st{${1:${TM_SELECTED_TEXT}}}${0}"),
     parse_snippet({ trig = "*k", name = "Underlined" }, "\\keyw{${1:${TM_SELECTED_TEXT}}}${0}"),
   }
 end
