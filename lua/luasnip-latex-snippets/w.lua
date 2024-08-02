@@ -65,6 +65,12 @@ function M.retrieve(is_math, not_math)
         \usepackage[french,english]{babel}
         \usepackage[T1]{fontenc}
         \usepackage{lmodern}
+
+        \usepackage{paralist} % Inline
+        \setdefaultitem{$\circ$}{$\triangleright$}{$\star$}{-}
+        \usepackage{enumitem} % Change list spacing
+        \setlist{topsep=2pt,itemsep=2pt,partopsep=2pt, parsep=2pt}
+
         \usepackage[svgnames]{xcolor}
 
         \usepackage{amsfonts,amssymb}    % define ensembles
@@ -107,6 +113,7 @@ function M.retrieve(is_math, not_math)
 
         \usepackage{cleveref}
 
+        \newcommand\keyw{\textsl} % keyw
         \newcommand{\nospell}[1]{#1}
 
         \newcommand{\mat}[1]{{\mathbf{{#1}}}}
