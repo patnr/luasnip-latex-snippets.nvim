@@ -66,4 +66,14 @@ M.with_opts = function(fn, opts)
   end
 end
 
+
+M.overline = function()
+  if vim.g.latex_snip_overline == 1 then
+    return "\\overline"
+  else
+    return "\\bar"
+  end
+end
+
+
 return M
