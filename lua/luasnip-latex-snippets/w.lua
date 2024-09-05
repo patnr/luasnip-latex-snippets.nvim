@@ -48,6 +48,23 @@ function M.retrieve(is_math, not_math)
     parse_snippet({ trig = "quote_builtin_block", name = "Block quote (builtin)" },
       "\\begin{quotation}\n\t$1\n\\end{quotation}$0"),
 
+    parse_snippet({ trig = "includegraphics", name = "includegraphics" },
+      "\\includegraphics[width=0.95\\textwidth]{$1}"),
+
+    s(
+      {
+        trig = "frame",
+        dscr = "Beamer frame",
+      },
+      fmta([[
+      \begin{frame}[<>]{<>}
+          <>
+      \end{frame}
+      ]], {
+          i(1, [[t/c/b, label=..., fragile, <handout/beamer:0>]]), i(2, "title"), i(3)
+        }
+      )
+    ),
 
     s(
       {
