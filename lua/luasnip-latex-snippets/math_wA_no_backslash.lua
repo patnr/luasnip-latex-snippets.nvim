@@ -23,6 +23,8 @@ function M.retrieve(is_math)
     with_priority({ trig = "atan", name = "atan" }, "\\arctan"),
     with_priority({ trig = "asec", name = "asec" }, "\\arcsec"),
 
+    parse_snippet({ trig = "**", name = "Emphasis (math)" }, "\\memph{${1:${TM_SELECTED_TEXT}}}${0}"),
+
     parse_snippet({ trig = "set", name = "set" }, [[ \\{$1\\} $0 ]]),
     parse_snippet({ trig = "fun", name = "function map" }, "${1:f} \\colon ${2:\\Reals} \\to \\colon ${3:\\Reals}"),
 
