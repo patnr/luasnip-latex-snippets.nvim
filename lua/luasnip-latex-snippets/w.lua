@@ -20,6 +20,47 @@ function M.retrieve(is_math, not_math)
     parse_snippet({ trig = "verb", name = "Verbatim inline (use any delimiter)" }, "\\verb|$1|$0"),
     parse_snippet({ trig = "verbatim", name = "Verbatim env (may contain newlines)" }, "\\begin{verbatim}\n\t$1\n\\end{verbatim}$0"),
 
+    parse_snippet({ trig = "columns", name = "Multicols ('auto' columns -- must usepackage{multicol})" }, "\\begin{multicols}{${1:2}}\n\t$0\n\\end{multicols}"),
+    s(
+      {
+        trig = "columns",
+        name = "Columns (for articles)",
+      },
+      fmta([[
+        \begin{minipage}[t]{0.49\textwidth}
+          <>
+        \end{minipage}
+        \hfill\begin{minipage}[t]{0.49\textwidth}
+          <>
+        \end{minipage}
+      ]], {
+          i(1),
+          i(2),
+        }
+      )
+    ),
+    s(
+      {
+        trig = "columns",
+        name = "Columns (for beamer)",
+      },
+      fmta([[
+      \begin{columns}[t,onlytextwidth]
+        % onlytextwidth: https://tex.stackexchange.com/a/366422 
+        \begin{column}{0.58\textwidth}
+          <>
+        \end{column}
+        \begin{column}{0.39\textwidth}
+          <>
+        \end{column}
+      \end{columns}
+      ]], {
+          i(1),
+          i(2),
+        }
+      )
+    ),
+
     -- From csquotes. Supports babel, nesting, etc.
     parse_snippet({ trig = "quote_inline", name = "Quote -- inline (package csquotes)" },
       "\\textquote[${1:citation}][${2:punctuation}]{${3:body}}$0"),
@@ -48,8 +89,15 @@ function M.retrieve(is_math, not_math)
     parse_snippet({ trig = "quote_builtin_block", name = "Block quote (builtin)" },
       "\\begin{quotation}\n\t$1\n\\end{quotation}$0"),
 
-    parse_snippet({ trig = "includegraphics", name = "includegraphics" },
-      "\\includegraphics[width=0.95\\textwidth]{$1}"),
+    s(
+      {
+        trig = "includegraphics",
+        dscr = "includegraphics",
+      },
+      fmta([[\includegraphics[trim={<> <> <> <>},clip,width=<>\textwidth]{<>}]],
+        { i(2, "left"),i(3, "bot"),i(4, "right"),i(5, "top"), i(6, "0.95"), i(1), }
+      )
+    ),
 
     s(
       {
