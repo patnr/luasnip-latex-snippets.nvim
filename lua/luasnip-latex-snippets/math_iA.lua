@@ -1,3 +1,4 @@
+-- "\alphabar" --> "\bar{\alpha}"
 local M = {}
 
 local ls = require("luasnip")
@@ -9,98 +10,28 @@ function M.retrieve(is_math)
 
   local decorator = {
     wordTrig = false,
-    condition = pipe({ is_math, no_backslash }),
+    condition = pipe({ is_math }),
   }
 
   local parse_snippet = ls.extend_decorator.apply(ls.parser.parse_snippet, decorator) --[[@as function]]
   local s = ls.extend_decorator.apply(ls.snippet, decorator) --[[@as function]]
 
-  return {
-    s(
-      {
-        trig = "(%a+)bar",
-        wordTrig = false,
-        regTrig = true,
-        name = "bar",
-        priority = 100,
-      },
-      f(function(_, snip)
-        return string.format(utils.overline() .. "{%s}", snip.captures[1])
-      end, {})
-    ),
-    s(
-      {
-        trig = "(%a+)und",
-        wordTrig = false,
-        regTrig = true,
-        name = "underline",
-        priority = 100,
-      },
-      f(function(_, snip)
-        return string.format("\\underline{%s}", snip.captures[1])
-      end, {})
-    ),
-    s(
-      {
-        trig = "(%a)dot",
-        wordTrig = false,
-        regTrig = true,
-        name = "dot",
-        priority = 100,
-      },
-      f(function(_, snip)
-        return string.format("\\dot{%s}", snip.captures[1])
-      end, {})
-    ),
+  local s2 = ls.extend_decorator.apply(s, {regTrig=true, priority=100}) --[[@as function]]
 
-    s(
-      {
-        trig = "(%a+)hat",
-        wordTrig = false,
-        regTrig = true,
-        name = "hat",
-        priority = 100,
-      },
-      f(function(_, snip)
-        return string.format("\\hat{%s}", snip.captures[1])
-      end, {})
-    ),
-    s(
-      {
-        trig = "(%a+)tilde",
-        wordTrig = false,
-        regTrig = true,
-        name = "tilde",
-        priority = 100,
-      },
-      f(function(_, snip)
-        return string.format("\\tilde{%s}", snip.captures[1])
-      end, {})
-    ),
-    s(
-      {
-        trig = "(%a+)ora",
-        wordTrig = false,
-        regTrig = true,
-        name = "ora",
-        priority = 100,
-      },
-      f(function(_, snip)
-        return string.format("\\overrightarrow{%s}", snip.captures[1])
-      end, {})
-    ),
-    s(
-      {
-        trig = "(%a+)ola",
-        wordTrig = false,
-        regTrig = true,
-        name = "ola",
-        priority = 100,
-      },
-      f(function(_, snip)
-        return string.format("\\overleftarrow{%s}", snip.captures[1])
-      end, {})
-    ),
+  return {
+    s2( { trig = "(\\?%a+)bar" }, f(function(_, snip) return string.format(utils.overline() .. "{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)und" }, f(function(_, snip) return string.format("\\underline{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)dot" }, f(function(_, snip) return string.format("\\dot{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)hat" }, f(function(_, snip) return string.format("\\hat{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)tilde" }, f(function(_, snip) return string.format("\\tilde{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)ola" }, f(function(_, snip) return string.format("\\overleftarrow{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)ora" }, f(function(_, snip) return string.format("\\overrightarrow{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)jk" }, f(function(_, snip) return string.format("\\vect{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)kj" }, f(function(_, snip) return string.format("\\vect{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)hj" }, f(function(_, snip) return string.format("\\mat{%s}", snip.captures[1]) end, {})),
+    s2( { trig = "(\\?%a+)jh" }, f(function(_, snip) return string.format("\\mat{%s}", snip.captures[1]) end, {})),
+
+
 
 
     parse_snippet({ trig = "*T", name = "text" }, "\\text{${1:${TM_SELECTED_TEXT}}}${0}"),

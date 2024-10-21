@@ -45,7 +45,6 @@ local _autosnippets = function(is_math, not_math)
   local autosnippets = {}
 
   for _, s in ipairs({
-    "math_wRA_no_backslash",
     "math_rA_no_backslash",
     "math_wA_no_backslash",
     "math_iA_no_backslash",
@@ -115,7 +114,6 @@ M.setup_markdown = function(is_math, not_math)
 
   local autosnippets = {}
   for _, s in ipairs({
-    "math_wRA_no_backslash",
     "math_rA_no_backslash",
     "math_wA_no_backslash",
     "math_iA_no_backslash",
