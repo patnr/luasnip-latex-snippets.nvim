@@ -106,8 +106,9 @@ end
 M.setup_markdown = function()
   local ls = require("luasnip")
 
-  local is_math = utils.with_opts(utils.is_math, true)
-  local not_math = utils.with_opts(utils.not_math, true)
+  local treesitter = vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil
+  local is_math = utils.with_opts(utils.is_math, treesitter)
+  local not_math = utils.with_opts(utils.not_math, treesitter)
 
   local autosnippets = {}
   for _, s in ipairs({
