@@ -5,12 +5,9 @@ local f = ls.function_node
 local fmta = require("luasnip.extras.fmt").fmta
 
 -- copied from luasnip-latex-snippets.util.utils
-local function is_env(name) 
+local function is_env(name)
     local is_inside = vim.fn['vimtex#env#is_inside'](name)
     return (is_inside[1] > 0 and is_inside[2] > 0)
-end
-local function is_math()
-  return vim.fn["vimtex#syntax#in_mathzone"]() == 1
 end
 
 local M = {}
