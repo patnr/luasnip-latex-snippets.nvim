@@ -34,6 +34,8 @@ M.setup = function(opts)
       group = augroup,
       once = true,
       callback = function()
+        local is_math = utils.with_opts(utils.is_math, opts.use_treesitter)
+        local not_math = utils.with_opts(utils.not_math, opts.use_treesitter)
         M.setup_markdown(is_math, not_math)
       end,
     })
