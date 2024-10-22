@@ -5,6 +5,8 @@ local no_backslash = utils.no_backslash
 local M = {}
 
 local default_opts = {
+  -- use_treesitter = vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil
+  -- Treesitter does not recognize math when vimtex enabled (?), so don't use!
   use_treesitter = false,
   allow_on_markdown = true,
 }
@@ -13,6 +15,7 @@ M.setup = function(opts)
   opts = vim.tbl_deep_extend("force", default_opts, opts or {})
 
   local augroup = vim.api.nvim_create_augroup("luasnip-latex-snippets", {})
+  -- Load for TeX
   vim.api.nvim_create_autocmd("FileType", {
     pattern = "tex",
     group = augroup,
@@ -24,18 +27,20 @@ M.setup = function(opts)
     end,
   })
 
+  -- Load for Markdown
   if opts.allow_on_markdown then
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "markdown",
       group = augroup,
       once = true,
       callback = function()
-        M.setup_markdown()
+        M.setup_markdown(is_math, not_math)
       end,
     })
   end
 end
 
+-- Collect autosnippets
 local _autosnippets = function(is_math, not_math)
   local autosnippets = {}
 
@@ -68,6 +73,7 @@ local _autosnippets = function(is_math, not_math)
   return autosnippets
 end
 
+-- Load for Tex
 M.setup_tex = function(is_math, not_math)
   local ls = require("luasnip")
   ls.add_snippets("tex", {
@@ -103,12 +109,9 @@ M.setup_tex = function(is_math, not_math)
   })
 end
 
-M.setup_markdown = function()
+-- Load for Markdown
+M.setup_markdown = function(is_math, not_math)
   local ls = require("luasnip")
-
-  local treesitter = vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil
-  local is_math = utils.with_opts(utils.is_math, treesitter)
-  local not_math = utils.with_opts(utils.not_math, treesitter)
 
   local autosnippets = {}
   for _, s in ipairs({
