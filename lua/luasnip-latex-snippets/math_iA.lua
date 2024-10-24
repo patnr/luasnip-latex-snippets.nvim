@@ -24,8 +24,6 @@ function M.retrieve(is_math)
     s2( { trig = "(\\?%a+)dot" }, f(function(_, snip) return string.format("\\dot{%s}", snip.captures[1]) end, {})),
     s2( { trig = "(\\?%a+)hat" }, f(function(_, snip) return string.format("\\hat{%s}", snip.captures[1]) end, {})),
     s2( { trig = "(\\?%a+)tilde" }, f(function(_, snip) return string.format("\\tilde{%s}", snip.captures[1]) end, {})),
-    s2( { trig = "(\\?%a+)ola" }, f(function(_, snip) return string.format("\\overleftarrow{%s}", snip.captures[1]) end, {})),
-    s2( { trig = "(\\?%a+)ora" }, f(function(_, snip) return string.format("\\overrightarrow{%s}", snip.captures[1]) end, {})),
     s2( { trig = "(\\?%a+)jk" }, f(function(_, snip) return string.format("\\vect{%s}", snip.captures[1]) end, {})),
     s2( { trig = "(\\?%a+)kj" }, f(function(_, snip) return string.format("\\vect{%s}", snip.captures[1]) end, {})),
     s2( { trig = "(\\?%a+)hj" }, f(function(_, snip) return string.format("\\mat{%s}", snip.captures[1]) end, {})),
