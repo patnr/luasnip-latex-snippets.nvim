@@ -54,13 +54,7 @@ function M.retrieve(is_math)
     parse_snippet({ trig = "floor", name = "floor" }, "\\left\\lfloor $1 \\right\\rfloor$0"),
     parse_snippet({ trig = "ceil", name = "ceil" }, "\\left\\lceil $1 \\right\\rceil $0"),
 
-    parse_snippet({ trig = "__", name = "subscript" }, "_{$1}$0"),
     parse_snippet({ trig = "invs", name = "inverse" }, "^{-1}"),
-    parse_snippet({ trig = "^^", name = "subscript" }, "^{$1}$0"),
-
-
-    -- TODO:
-    parse_snippet({ trig = "||", name = "norm2" }, "\\| $1 \\|^2$0"),
 
     parse_snippet({ trig = "beg", name = "begin{} / end{}" }, "\\begin{$1}\n\t$0\n\\end{$1}"),
     parse_snippet({ trig = "bmat", name = "bmat" }, "\\begin{bmatrix} $1 \\end{bmatrix}$0"),
@@ -93,18 +87,17 @@ function M.retrieve(is_math)
     parse_snippet({ trig = "<>", name = "hokje" }, "\\diamond"),
     parse_snippet({ trig = ">>", name = ">>" }, "\\gg"),
     -- parse_snippet({ trig = "<<", name = "<<" }, "\\ll"),
-    parse_snippet({ trig = "<<", name = "<<" }, "\\langle $1 \\rangle$0"),
+    parse_snippet({ trig = "<<", name = "<<" }, "\\langle $1 \\rangle"),
 
-    parse_snippet({ trig = "left_right(", name = "left( right)" }, "\\left( $1 \\right)$0"),
-    parse_snippet({ trig = "left_right[", name = "left[ right]" }, "\\left[ $1 \\right]$0"),
-    parse_snippet({ trig = "left_right{", name = "set braces" }, "\\{ ${1} \\\\}$0"),
+    parse_snippet({ trig = "((", name = "left( right)" }, "\\left( $1 \\right)"),
+    parse_snippet({ trig = "[[", name = "left[ right]" }, "\\left[ $1 \\right]"),
+    parse_snippet({ trig = "{{", name = "left{ right}" }, "\\{ $1 \\}"),
 
-    parse_snippet({ trig = "(_2snip", name = "Autopair paranthesis with jumpable placeholder" }, "(${1})$0"),
-    parse_snippet({ trig = "[_2snip", name = "Autopair bracket with jumpable placeholder" }, "[${1}]$0"),
-    parse_snippet({ trig = "{_2snip", name = "Autopair brace with jumpable placeholder" }, "{${1}}$0"),
+    parse_snippet({ trig = "$$_snippet", name = "" }, "\\begin{equation}\n\t$1\n\\end{equation}"),
 
-    -- Autopairs actually puts this inside of math mode
-    parse_snippet({ trig = "$_2snip", name = "Autopair dollar with jumpable placeholder" }, "\\$${1}\\$${0}"),
+    parse_snippet({ trig = "||", name = "norm2" }, "\\| $1 \\|^2$0"),
+    parse_snippet({ trig = "__", name = "subscript" }, "_{$1}$0"),
+    parse_snippet({ trig = "^^", name = "subscript" }, "^{$1}$0"),
   }
 end
 

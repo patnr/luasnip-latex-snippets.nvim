@@ -12,19 +12,9 @@ function M.retrieve(not_math)
   }) --[[@as function]]
 
   return {
-    parse_snippet({ trig = "double_quote_snip", name = "Double quotes" }, "\\enquote{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "single_quote_snip", name = "Single quotes" }, "\\enquote*{${1:${TM_SELECTED_TEXT}}}${0}"),
-
-    parse_snippet({ trig = "left_right(", name = "Cancel left_right" }, "(($0))"),
-    parse_snippet({ trig = "left_right{", name = "Cancel left_right" }, "{{$0}}"),
-    parse_snippet({ trig = "left_right[", name = "" }, "\\[ $0 \\]"),
-
-    parse_snippet({ trig = "(_2snip", name = "Autopair paranthesis with jumpable placeholder" }, "(${1})$0"),
-    parse_snippet({ trig = "[_2snip", name = "Autopair bracket with jumpable placeholder" }, "[${1}]$0"),
-    parse_snippet({ trig = "{_2snip", name = "Autopair brace with jumpable placeholder" }, "{${1}}$0"),
-
-    parse_snippet({ trig = '"_2snip', name = "Autopair quote with jumpable placeholder" }, '\"${1}\"${0}'),
-    parse_snippet({ trig = "'_2snip", name = "Autopair quote* with jumpable placeholder" }, "'${1}'${0}"),
+    parse_snippet({ trig = '""_snippet', name = "Double quotes" }, "\\enquote{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "''_snippet", name = "Single quotes" }, "\\enquote*{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "[[", name = "" }, "\\[ $0 \\]"),
   }
 end
 
