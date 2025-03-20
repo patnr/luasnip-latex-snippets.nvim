@@ -13,9 +13,10 @@ function M.retrieve(not_math)
 
   return {
     -- Double/repeat press snippets
-    parse_snippet({ trig = '""', name = "Double quotes" }, "\\enquote{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "''", name = "Single quotes" }, "\\enquote*{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "[[", name = "" }, "\\[ $0 \\]"),
+    parse_snippet({ trig = '*"', name = "Double quotes" }, "\\enquote{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*'", name = "Single quotes" }, "\\enquote*{${1:${TM_SELECTED_TEXT}}}${0}"),
+    parse_snippet({ trig = "*[", name = "Equation" }, "\\[ $0 \\]"),
+    parse_snippet({ trig = "*$", name = "Equation env" }, "\\begin{equation}\n\t$1\n\\end{equation}"),
   }
 end
 

@@ -90,10 +90,9 @@ function M.retrieve(is_math)
 
     -- Double/repeat press snippets
     parse_snippet({ trig = "<<", name = "<<" }, "\\langle $1 \\rangle"),
-    parse_snippet({ trig = "((", name = "left( right)" }, "\\left( $1 \\right)"),
-    parse_snippet({ trig = "[[", name = "left[ right]" }, "\\left[ $1 \\right]"),
-    parse_snippet({ trig = "{{", name = "left{ right}" }, "\\{ $1 \\}"),
-    parse_snippet({ trig = "$$", name = "" }, "\\begin{equation}\n\t$1\n\\end{equation}"),
+    parse_snippet({ trig = "*(", name = "left( right)" }, "\\left( $1 \\right)"),
+    parse_snippet({ trig = "*[", name = "left[ right]" }, "\\left[ $1 \\right]"),
+    parse_snippet({ trig = "*{", name = "left{ right}" }, "\\{ $1 \\\\}"),
     parse_snippet({ trig = "||", name = "norm2" }, "\\| $1 \\|^2$0"),
     parse_snippet({ trig = "__", name = "subscript" }, "_{$1}$0"),
     parse_snippet({ trig = "^^", name = "subscript" }, "^{$1}$0"),
