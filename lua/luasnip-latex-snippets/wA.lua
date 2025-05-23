@@ -6,7 +6,7 @@ local M = {}
 
 function M.retrieve(not_math)
   local parse_snippet = ls.extend_decorator.apply(ls.parser.parse_snippet, {
-    condition = pipe({ not_math }),
+    condition = pipe({ not_math, function () return not utils.comment() end }),
   }) --[[@as function]]
 
   local parse_s_no_bs = ls.extend_decorator.apply(ls.parser.parse_snippet, {
