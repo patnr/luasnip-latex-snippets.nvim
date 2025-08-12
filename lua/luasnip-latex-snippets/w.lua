@@ -17,7 +17,7 @@ function M.retrieve(is_math, not_math)
   }) --[[@as function]]
 
   return {
-    parse_snippet({ trig = "verb", name = "Verbatim inline (use any delimiter)" }, "\\verb|$1|$0"),
+    parse_snippet({ trig = "verb", name = "Verbatim inline (use any delimiter)" }, "\\verb${1:|}$2$1$0"),
     parse_snippet({ trig = "verbatim", name = "Verbatim env (may contain newlines)" }, "\\begin{verbatim}\n\t$1\n\\end{verbatim}$0"),
 
     parse_snippet({ trig = "columns", name = "Multicols ('auto' columns -- must usepackage{multicol})" }, "\\begin{multicols}{${1:2}}\n\t$0\n\\end{multicols}"),
@@ -75,14 +75,15 @@ function M.retrieve(is_math, not_math)
         dscr = "Quote -- block (package csquotes)",
       },
       fmta([[
-      \begin{verbatim}
+      \begin{displayquote}[${1:citation}][${2:punctuation}]
           <>
-      \end{verbatim}
+      \end{displayquote}
       ]], {
           i(1),
         }
       )
     ),
+
     -- Builtin
     parse_snippet({ trig = "quote_builtin_inline", name = "Inline quote (builtin)" },
       "\\begin{quote}\n\t$1\n\\end{quote}$0"),
