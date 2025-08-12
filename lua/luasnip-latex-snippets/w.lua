@@ -64,22 +64,20 @@ function M.retrieve(is_math, not_math)
     -- From csquotes. Supports babel, nesting, etc.
     parse_snippet({ trig = "quote_inline", name = "Quote -- inline (package csquotes)" },
       "\\textquote[${1:citation}][${2:punctuation}]{${3:body}}$0"),
-    parse_snippet({ trig = "quote_auto", name = "Quote -- inline if short, block if long (package csquotes)" },
-      "\\blockquote[${1:citation}][${2:punctuation}]{${3:body}}$0"),
-    -- parse_snippet({ trig = "quote_block", name = "Quote -- block (package csquotes)" },
-    --   "\\begin{displayquote}\n\t$1\n\\end{displayquote}$0"),
-    -- Equivalent (seems like) implementation
+    -- NB: In my tests, \blockquote just hides long texts, rather than making them displayquotes.
+    -- parse_snippet({ trig = "quote_auto", name = "Quote -- inline if short, block if long (package csquotes)" },
+    -- "\\blockquote[${1:citation}][${2:punctuation}]{${3:body}}$0"),
     s(
       {
         trig = "quote_block",
         dscr = "Quote -- block (package csquotes)",
       },
       fmta([[
-      \begin{displayquote}[${1:citation}][${2:punctuation}]
+      \begin{displayquote}[<>][<>]
           <>
       \end{displayquote}
       ]], {
-          i(1),
+          i(1, "citation"), i(2, "punctuation"), i(3)
         }
       )
     ),
