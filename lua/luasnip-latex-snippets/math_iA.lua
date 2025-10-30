@@ -66,6 +66,7 @@ function M.retrieve(is_math)
       "\\int_{${1:-\\infty}}^{${2:\\infty}} ${3:${TM_SELECTED_TEXT}} $0"
     ),
 
+    -- NB: all these arrow snippets (containing "-") stopped working recently
     parse_snippet({ trig = "|->", name = "mapsto" , priority=1000}, "\\mapsto"),
     parse_snippet({ trig = "->", name = "to", priority = 100 }, "\\to"),
     parse_snippet({ trig = "-->", name = "long to", priority = 200 }, "\\xrightarrow[${1:lower}]{${2:upper}}$0"),

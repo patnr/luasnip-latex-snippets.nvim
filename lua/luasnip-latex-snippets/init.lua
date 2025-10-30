@@ -6,8 +6,7 @@ local M = {}
 
 local default_opts = {
   -- use_treesitter = vim.treesitter.highlighter.active[vim.api.nvim_get_current_buf()] ~= nil
-  -- Treesitter does not recognize math when vimtex enabled (?), so don't use!
-  use_treesitter = false,
+  use_treesitter = true,  -- NB: Treesitter does not recognize math if vimtex syntax enabled
   allow_on_markdown = true,
 }
 
