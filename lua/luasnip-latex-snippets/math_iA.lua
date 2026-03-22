@@ -84,17 +84,16 @@ function M.retrieve(is_math)
     parse_snippet({ trig = "~~", name = "~" }, "\\sim"),
     parse_snippet({ trig = "≈",  name = "approx" }, "\\approx"),
     parse_snippet({ trig = "!=", name = "not equals" }, "\\neq"),
-
     parse_snippet({ trig = "<>", name = "hokje" }, "\\diamond"),
-    parse_snippet({ trig = ">>", name = ">>" }, "\\gg"),
-    -- parse_snippet({ trig = "<<", name = "<<" }, "\\ll"), -- used for \langle,\rangle instead
 
     -- Double/repeat press snippets
-    parse_snippet({ trig = "<<", name = "<<" }, "\\langle $1 \\rangle"),
+    parse_snippet({ trig = ">>", name = ">>" }, "\\gg"), -- doesn't work
+    parse_snippet({ trig = "<<", name = "<<" }, "\\ll"),
+    parse_snippet({ trig = "*<", name = "brackets" }, "\\langle $1 \\rangle"),
     parse_snippet({ trig = "*(", name = "left( right)" }, "\\left( $1 \\right)"),
     parse_snippet({ trig = "*[", name = "left[ right]" }, "\\left[ $1 \\right]"),
     parse_snippet({ trig = "*{", name = "left{ right}" }, "\\{ $1 \\\\}"),
-    parse_snippet({ trig = "||", name = "norm2" }, "\\| $1 \\|^2$0"),
+    parse_snippet({ trig = "*|", name = "norm2" }, "\\| $1 \\|^2$0"),
     parse_snippet({ trig = "__", name = "subscript" }, "_{$1}$0"),
     parse_snippet({ trig = "^^", name = "subscript" }, "^{$1}$0"),
   }
