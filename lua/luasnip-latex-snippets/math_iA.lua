@@ -29,15 +29,6 @@ function M.retrieve(is_math)
     s2( { trig = "(\\?%a+)hj" }, f(function(_, snip) return string.format("\\mat{%s}", snip.captures[1]) end, {})),
     s2( { trig = "(\\?%a+)jh" }, f(function(_, snip) return string.format("\\mat{%s}", snip.captures[1]) end, {})),
 
-
-
-
-    parse_snippet({ trig = "*T", name = "text" }, "\\text{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*F", name = "mathfrak" }, "\\mathfrak{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*C", name = "mathcal" }, "\\mathcal{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*S", name = "mathscr" }, "\\mathscr{${1:${TM_SELECTED_TEXT}}}${0}"),
-    parse_snippet({ trig = "*B", name = "mathbb" }, "\\mathbb{${1:${TM_SELECTED_TEXT}}}${0}"),
-
     parse_snippet({ trig = "exists", name = "exists" }, "\\exists"),
     parse_snippet({ trig = "forall", name = "forall" }, "\\forall"),
     parse_snippet({ trig = "notin", name = "not in " }, "\\not\\in"),
@@ -89,11 +80,6 @@ function M.retrieve(is_math)
     -- Double/repeat press snippets
     parse_snippet({ trig = ">>", name = ">>" }, "\\gg"), -- doesn't work
     parse_snippet({ trig = "<<", name = "<<" }, "\\ll"),
-    parse_snippet({ trig = "*<", name = "brackets" }, "\\langle $1 \\rangle"),
-    parse_snippet({ trig = "*(", name = "left( right)" }, "\\left( $1 \\right)"),
-    parse_snippet({ trig = "*[", name = "left[ right]" }, "\\left[ $1 \\right]"),
-    parse_snippet({ trig = "*{", name = "left{ right}" }, "\\{ $1 \\\\}"),
-    parse_snippet({ trig = "*|", name = "norm2" }, "\\| $1 \\|^2$0"),
     parse_snippet({ trig = "__", name = "subscript" }, "_{$1}$0"),
     parse_snippet({ trig = "^^", name = "subscript" }, "^{$1}$0"),
   }
